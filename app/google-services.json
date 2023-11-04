@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "598380260044",
+    "project_id": "phonehealthcheckupapp",
+    "storage_bucket": "phonehealthcheckupapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598380260044:android:b8e4f1720932a3d96cf069",
+        "android_client_info": {
+          "package_name": "com.base.phonehealthcheckupapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZg7PDItrlmZ9VQsUByiPwzqzqWT1GDYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
