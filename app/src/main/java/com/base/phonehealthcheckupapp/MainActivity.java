@@ -3,19 +3,25 @@ package com.base.phonehealthcheckupapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private  CardView cardV;
 
 
 
@@ -39,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle(""); // Clear the default title
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar_title);
+
+// Now, you can set the text for the centered title.
+        TextView customTitle = getSupportActionBar().getCustomView().findViewById(R.id.custom_title);
+        customTitle.setText("Services");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
+
+        cardV= findViewById(R.id.cardV);
+
+
+
         int cameraPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA);
         int contactsPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS);
         int locationPermission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION);
@@ -47,7 +70,15 @@ public class MainActivity extends AppCompatActivity {
         int blueToothPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH);
         int accelerometerPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.BODY_SENSORS);
         int gyroscopePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.BODY_SENSORS);
-        ActivityCompat.requestPermissions(this, permissions, requestCode);
+
+
+        cardV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityCompat.requestPermissions(MainActivity.this, permissions, requestCode);
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
+            }
+        });
 
     }
 
